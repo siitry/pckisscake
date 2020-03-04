@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!--引入echarts.js-->
+  <script src="echarts.min.js"></script>
+</head>
+<body>
+     <h3>百度绘图库</h3>
+     <!--创建echart图形的容器-->
+     <div id="main" style="width:600px;height:400px;"></div>
+     <hr>
+     <!--创建map图形容器-->
+     <div id="map" style="width:600px;height:400px;"></div>
+     <script>
+       //功能:销售统计图:柱状图形
+       //1:获取图形容器 main
+       //2:依据main对象创建echarts对象
+       var main = document.getElementById("main");
+       var mycharts = echarts.init(main);
+       //3:创建配置对象
+       var options = {
+         //顶部标题
+         title:{text:"笔记本电脑销售图"},
+         tooltip:{},//提示工具栏
+         //x轴数据
+         xAxis:{data:["华为","联想","战神","小米"]},
+         yAxis:{},//y空心
+         //数据源
+         series:[
+          {
+            type:"bar",//柱状
+            data:[100,99,300,33],
+          },
+          {
+            type:"line",//折线
+            smooth: true,//平滑曲线
+            data:[100,99,300,33]
+          }
+          ]
+
+       };
+       //4:将配置对象添加echarts对象 
+       mycharts.setOption(options);
+
+       //===============================
+       //第二个图形容器
+       //1:获取图形容器
+       var map = document.getElementById("map");
+       //2:创建echarts对象
+       var mapcharts = echarts.init(map);
+       //3:创建配置项对象
+       var options2 = {
+          title:{//标题开始  start 15
+            text:"广告统计图",  //标题内容
+            left:"center",     //标题居中
+            top:10,            //距离顶部位置
+            textStyle:{
+              color:"#aaa",    //灰色
+              fontSize:12,     //字体大小
+            }
+          },//标题结束     end
+          backgroundColor:"#2c343c",//背景颜色
+
+       };
+       //4:将配置对象添加echarts对象
+       mapcharts.setOption(options2)
+     </script>
+</body>
+</html>
